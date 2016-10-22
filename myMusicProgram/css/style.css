@@ -1,0 +1,252 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+dl,
+dd{
+	margin: 0;
+	-webkit-text-size-adjust:100%;
+	font-family: Helvetica;
+
+}
+/* 
+在去除webkit默认的样式和outlime以后：
+默认情况下inuput框有2px的border和
+1px的padding
+默认情况下button有2px的border和左右6px的padding
+上两个px和下3个px的padding */
+ul,
+ol{
+	margin:0;
+	padding:0;
+	list-style: none;
+}
+img{
+	display:block;
+}
+a{
+	text-decoration: none;
+}
+
+input,button{
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	-webkit-appearance:none;
+	outline:none;
+}
+html,body{
+	/*因为宽度已经是设备的宽度了*/
+	height:100%;
+	overflow:hidden;
+	position: relative;
+	background: #eee;
+
+}
+.wrap{
+	height:100%;
+	overflow: auto;
+}
+#header{
+	/*相对于根body定位*/
+	width:100%;
+	position: absolute;
+	/* 绝对定位和浮动都具有包裹性，那么当元素浮动或者绝对定位以后还想让其宽度和父元素宽度相等那么就要加上
+	width:100%; */
+	background: rgba(0,0,0,0.8);
+	left:0;
+	top:0;
+	z-index:2;
+
+
+}
+.headerC{
+	height:2.0rem;
+	background-color: light-grey;
+	
+}
+
+#logo{
+	/* 父元素浮动 */
+	float:left;
+	
+    padding:0.38rem 0.25rem 0.30rem; 
+    
+	
+
+
+}
+
+#logo img{
+	/* 子元素不浮动，子元素可以撑开父元素的高度 */
+	/*img标签指定了宽或者高中的一项，那么另外一项按照比例自动缩放*/
+     width:3.55rem;
+	
+}
+#menuBtn{
+	float:left;
+	width:1.9rem;
+	/* 内联元素a img是可以设置宽和高的 */
+	height:2rem;
+	background:url(../imgs/menuBtn.png) no-repeat;
+	background-size: 1.2rem 3.5rem;
+}
+/* 通过控制background-position来控制一个a标签的背景图显示*/
+/*显示的时候*/
+.menuBtnClos{
+	/*!important代表很重要*/
+
+	background-position: center 0.24em !important
+}
+.menuBtnShow{
+	background-position: center -1.78em !important
+}
+/* 第一，父元素不浮动，子元素不浮动，子元素内容可以填充父元素
+
+第二，父元素浮动，子元素不浮动，子元素内容可以填充父元素
+
+第三，父元素浮动或者绝对定位，子元素浮动，子元素内容可以填充父元素
+      但是父元素相对定位，子元素浮动，子元素内容不能撑开父元素
+
+第一，父元素不浮动，子元素浮动，子元素内容不可以填充父元素 */
+#btns {
+  /* 父元素浮动 */
+  float: right;
+  padding-top: 0.61111111rem;
+ 
+}
+/* 子元素也浮动，那么子元素将撑开父元素的高度 */
+#btns a {
+  float: left;
+  margin-right: 0.22222222rem;
+  width: 1.64444444rem;
+  background: #690;
+  color: #ccc;
+  font-size: 0.62222222rem;
+  line-height: 1.15555556rem;
+  text-align: center;
+  border-radius: 0.11851852rem;
+}
+
+#btns .searchBtn{
+	background:red;
+	font-weight: bold;
+	color:#fff;
+	margin-right:0.45rem;
+	width:1.93rem;
+	line-height: 1.3rem;
+	border-radius: 1.4rem;
+}
+
+.search{
+	/* 父元素已经指定高度了，以防子元素浮动造成
+	高度塌陷 */
+	height:1.5rem;
+	padding:0.24rem;
+}
+
+.search input[type="text"]{
+	float:left;
+	width:12.3rem;
+	height: 1.5rem;
+	background: #999;
+	padding:5px 10px;
+	border:1px solid #5a5a5a;
+    box-sizing:border-box;
+    font-size: .6rem;
+    color:#333;
+    border-radius:0.22rem 0 0 0.22rem;
+
+}
+
+.search input[type="text"]:focus{
+	background: #fff;
+}
+
+.search input[type="text"]::-webkit-input-placeholder{
+	color:#333;
+}
+.search input[type="submit"] {
+  width: 3.00740741rem;
+  height: 1.52592593rem;
+  float: right;
+  border: none;
+  background: #414040;
+  color: #fff;
+  border-radius: 0 0.22222222rem 0.22222222rem 0;
+  font-size: 0.77037037rem;
+}
+
+#nav{
+	
+	position:absolute;
+	/* 元素绝对定位后，那么具有了包裹性，那么如果还想让器宽度和父元素宽度相等，那么
+	必须加上width:100%; */
+	width:100%;
+	left:0;
+	top:2rem;
+	border-top:1px solid #6a6a6a;
+	background: rgba(0, 0, 0, 0.8);
+	padding:0.15em;
+	display:none;
+}
+
+#nav li{
+	/* 父元素绝对定位或者浮动，但是相对定位就不行了*/
+	/* 子元素浮动不会使父元素高度塌陷，也就是能够撑起父元素的高度 */
+	float:left;
+	width:22.5%;
+	line-height: 2rem;
+	font-size: .8em;
+	text-align: center;
+}
+#nav a {
+	color:#fff;
+}
+
+.content {
+	padding-top:4rem;
+	position:relative;
+	z-index:1;
+}
+
+#navScroll {
+	/* ul的父级有了高度，那么ul就可以浮动了，
+	 */
+	height:2.62rem;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+	padding:0.5rem 0 0.2rem;
+	overflow: hidden;
+	background-color: red;
+	/* 此时ul的父级clientheight为1.9rem */
+}
+#navs {
+	height:1.9em;
+	white-space: nowrap;
+	font-size: 0;
+	/*注意浮动时浮动到父元素的内容区的左边，而不是包括padding和border等*/
+	/*同时注意绝对定位，如果left：0，top：0指的是父级元素内容区的左上角，而不包括左上角的padding和border等*/
+	/* 所以即使子元素浮动了，父元素指定了padding，也能约束子元素的显示起始位置 */
+	float: left;
+
+}
+#navs li{
+	background-color:green;
+	display:inline-block;
+	font-size: 1.04rem;
+	line-height: 1.9rem;
+	padding:0 0.57em;
+}
+
+
+
+
+
+
+
+
+
+

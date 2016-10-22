@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<title>我的音乐我的台</title>
+</head>
+<script>
+	setRem();
+	window.addEventListener("orientationchange",setRem);
+	window.addEventListener("resize",setRem);
+	function setRem(){
+		var html = document.querySelector("html");
+		var width = html.getBoundingClientRect().width;
+		html.style.fontSize = width/16+"px";
+
+	}
+
+	
+
+</script>
+<link href = "css/style.css" rel="stylesheet"/>
+<body>
+	<section class = wrap>
+
+	        <header id= "header">
+	           <!-- 头部的最上面的按钮组 -->
+	           <div class="headerC">
+	                <!-- 在logo标签外套一层h1seo优化 -->
+	           		<h1 id="logo">
+	           			<!-- 一般在img标签外面套一层a标签 -->
+	           			 <a href="#">
+	           				<img src="imgs/logo.png"/>
+	           			 </a> 
+
+	           		</h1>
+
+	           		<!-- 在a标签的背景图可以设置图片，同样可以实现图片和点击共存-->
+	           		<!-- 添加注释快捷键 html：c 然后加tab 
+	           		css中：cm然后加tab-->
+	           		<!--  前面的h1用了浮动，那么这里只能用inline标签，不能用块元素，否则会乱-->
+					<a href="javascript:;" id="menuBtn" class="menuBtnClos"></a>
+                    
+					<nav id="btns">
+						<a href="#" class="searchBtn">搜索</a>
+						<a href="">注册</a>
+						<a href="">登录</a>
+					</nav>
+
+	           </div>
+
+
+
+	           <!-- 头部下面的的搜索框 -->
+	           <form class="search">
+	           <!--  由于input框表现为inline-bock那么他们之间有1个字符大小的宽度,如果是float外表看起来时inline-block但是中间那个1个字符的宽度就没有了-->
+	           <input type="text" name="" placeholder="请输入搜索内容">
+	           <input type="submit" value="搜索">
+	           </form>
+               <!-- 点击按钮后跳出的选项区域 默认隐藏-->
+	        <ul id = "nav">
+				<li>
+	            <a href="javascript:void(0);" class="" data-tab="index">首页</a>
+		        </li>
+		        <li>
+		            <a href="javascript:void(0);" data-tab="mv" class="">MV</a>
+		        </li>
+		        <li>
+		            <a href="javascript:void(0);" data-tab="pl" class="">悦单</a>
+		        </li>
+		        <li>
+		            <a href="javascript:void(0);" data-tab="vchart" class="">V榜</a>
+		        </li>
+			    <li><a href="http://zhongchou.yinyuetai.com/wap" class="">众筹</a></li>
+		        <li>
+		            <a href="http://www.yinyuetai.com/fanMass" data-tab="wapfan" class="">饭团</a>
+		        </li>
+		        <li>
+		            <a href="javascript:void(0);" data-tab="program" class="">节目</a>
+		        </li>
+		        <li>
+		            <a href="javascript:void(0);" data-tab="stage" class="">音悦stage</a>
+		        </li>
+		        <li>
+		            <a href="javascript:void(0);" data-tab="apps/mobile" class="">APP下载</a>
+		        </li>
+		        <li>
+		            <a href="http://news.yinyuetai.com/" target="_blank" class="">资讯</a>
+		        </li>
+		        <li>
+		            <a href="http://i.yinyuetai.com" target="_blank" class="selected">我的家</a>
+		        </li>
+		        <li>
+		            <a href="javascript:void(0);" data-tab="apps" class="">热门应用</a>
+		        </li>
+
+
+		     </ul>
+            </header>
+            <!--  以下为内容区域部分-->
+            <div class="content">
+            <!-- 内容区域的导航区 -->
+            <nav id="navScroll">
+            		<ul id = "navs">
+            				<li class="active">
+		            <a href="javascript:void(0);" class="" data-tab="index">首页</a>
+		        </li>
+		        <li>
+		            <a href="javascript:void(0);" data-tab="mv" class="">MV</a>
+		        </li>
+		        <li>
+		            <a href="javascript:void(0);" data-tab="pl" class="">悦单</a>
+		        </li>
+		        <li>
+		            <a href="javascript:void(0);" data-tab="vchart" class="">V榜</a>
+		        </li>
+			    <li><a href="http://zhongchou.yinyuetai.com/wap" class="">众筹</a></li>
+		        <li>
+		            <a href="http://www.yinyuetai.com/fanMass" data-tab="wapfan" class="">饭团</a>
+		        </li>
+		        <li>
+		            <a href="javascript:void(0);" data-tab="program" class="">节目</a>
+		        </li><li>
+		            <a href="javascript:void(0);" data-tab="program" class="">节目</a>
+		        </li>
+		        <li>
+		            <a href="javascript:void(0);" data-tab="stage" class="">音悦stage</a>
+		        </li>
+		        <li>
+		            <a href="javascript:void(0);" data-tab="apps/mobile" class="">APP下载</a>
+		        </li>
+		        <li>
+		            <a href="http://news.yinyuetai.com/" target="_blank" class="">资讯</a>
+		        </li>
+		        <li>
+		            <a href="http://i.yinyuetai.com" target="_blank" class="selected">我的家</a>
+		        </li>
+		        <li>
+		            <a href="javascript:void(0);" data-tab="apps" class="">热门应用</a>
+		        </li>
+
+            </ul>
+
+
+
+
+
+            	</nav>
+
+			</div>
+
+
+	</section>
+	<script>
+	/*
+	navShow();
+	function navShow() {
+	var btn = document.querySelector("#menuBtn");
+	var nav = document.querySelector("#nav");
+	btn.addEventListener(
+		"touchstart",
+		function(e) {
+			if(btn.className == "menuBtnClos") {
+				btn.className = "menuBtnShow";
+				nav.style.display = "block";
+			} else {
+				btn.className = "menuBtnClos";
+				nav.style.display = "none";
+			}
+			e.stopPropagation();
+		}
+	);
+	nav.addEventListener("touchstart", function(e) {
+		e.stopPropagation();
+	});
+	document.addEventListener(
+		"touchstart",
+		function (){
+			if(btn.className == "menuBtnShow"){
+				btn.className = "menuBtnClos";
+				nav.style.display = "none";
+			}
+		}
+	);
+}*/
+       
+		;(function(window,document){
+		//拿到那个要点击的button
+		  var btn = document.querySelector("#menuBtn");
+		  //拿到那个要实现出现的菜单
+		  var nav = document.querySelector("#nav");
+		  //实现点击button在切换菜单的出现和隐藏；
+          btn.addEventListener("touchstart",function(e){
+          	if (btn.className=="menuBtnClos") {
+          		btn.className="menuBtnShow";
+          		nav.style.display="block";
+
+
+
+          	}else{
+          		btn.className="menuBtnClos";
+          		nav.style.display = "none";
+          	}
+          	e.stopPropagation();
+          });
+        //下面实现点击出现的菜单的时候，菜单不隐藏，而点击菜单其他的位置的时候可以隐藏菜单
+        nav.addEventListener("touchstart",function(e){
+        	e.stopPropagation();
+        })
+        document.addEventListener("touchstart",function(e){
+        	if(btn.className=="menuBtnShow"){
+        		btn.className="menuBtnClos";
+        		nav.style.display="none";
+        	}
+        })
+
+
+
+
+		}(window,document))
+	</script>
+	
+</body>
+</html>
