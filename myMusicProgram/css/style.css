@@ -211,6 +211,7 @@ html,body{
 	position:relative;
 	z-index:1;
 }
+/* 以下为滑动导航 */
 
 #navScroll {
 	/* ul的父级有了高度，那么ul就可以浮动了，
@@ -220,7 +221,8 @@ html,body{
 	box-sizing: border-box;
 	padding:0.5rem 0 0.2rem;
 	overflow: hidden;
-	background-color: red;
+	background-color:pink;
+	
 	/* 此时ul的父级clientheight为1.9rem */
 }
 #navs {
@@ -234,11 +236,68 @@ html,body{
 
 }
 #navs li{
-	background-color:green;
+	
 	display:inline-block;
 	font-size: 1.04rem;
 	line-height: 1.9rem;
 	padding:0 0.57em;
+}
+
+#navs a{
+	color:#020202;
+}
+
+#navs .active{
+	background: #690;
+}
+#navs .active a{
+	color:#fff;
+
+}
+
+/* 以下为轮播图 
+此轮播图在图片大小未知的情况下做到兼容
+要做到兼容：不能设置确定的高度
+*/
+#picTab {
+     /* div默认宽度为100%，高度不确定 由子元素撑开*/
+	overflow:hidden;
+	/* 相对定位，为方便定位点点 */
+	position:relative;
+
+	
+}
+
+#picList{
+	/* 宽度为400的ul */
+	width:400%;
+	
+}
+
+#picList li{
+	/* li为浮动此时，ul高度塌陷 但是ul外层的div却包住了这些浮动的li*/
+	float:left;
+	width:25%;
+}
+/* 原理：
+子元素有属性浮动：
+如果父元素不是overflow：hidden或者position：absolute或者float：left或者right
+那么此时块级的父元素高度如果不指定，那么高度将会塌陷
+
+但是有一种比较特殊，就是父元素的父元素，也就是爷爷级元素，如果指定了overflow：hidden，或者position
+：absolute或者float：left，那么爷爷级元素会将这个塌陷的儿子（虽然此时儿子依然塌陷和浮动的孙子全部包裹在一起，形成对孙子浮动
+破坏性的抗拒
+所以如果子孙有浮动，一定要看祖辈不一定是父级元素的overflow和float以及position属性的有没有值
+
+
+
+
+
+ */
+
+#picList img{
+	width:100%;
+	display:block;
 }
 
 

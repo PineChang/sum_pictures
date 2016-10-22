@@ -5,29 +5,36 @@
 	<title>Document</title>
 </head>
 <style>
-#father{
-	padding:2rem;
-	border:1px solid black;
-	height: 20rem;
+#grandfather{
+	
+	border:1rem solid black;
+	
 	background-color:green;
+	
 	position:relative;
 	
-}
-#father div{
-
-	padding:0;
-	height:10rem;
-	width:10rem;
-	position: absolute;
 	
-	background:red;
-
 }
+#father{
+	border:1rem solid blue;
+	width:10rem;
+}
+
+#son {
+	background-color:red;
+	width:5rem;
+	height:5rem;
+	float:left;
+}
+
 </style>
 <body>
-	 <div id= "father">
-	 	<div>zhongguo</div>
-	 	<div>zhngguo</div>
+	 <div id= "grandfather">
+	 	<div id = "father">
+	 		<div id="son">洛阳<div>
+	 	</div>
+
+	 	
 	 </div>
 </body>
 </html>

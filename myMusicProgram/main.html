@@ -141,49 +141,44 @@
 
             </ul>
 
+  			</nav>
+
+  	<div id = "picTab">
+
+		<ul id = "picList">
+			<li>
+		        	<a href="#">
+		            	<img src="imgs/img1.jpg" />
+		            </a>
+		        </li>
+		        <li>
+		        	<a href="#">
+		            	<img src="imgs/img2.jpg" />
+		            </a>
+		        </li>
+		        <li>
+		        	<a href="#">
+		            	<img src="imgs/img3.jpg" />
+		            </a>
+		        </li>
+		        <li>
+		        	<a href="#">
+		            	<img src="imgs/img4.jpg" />
+		            </a>
+		        </li>
+
+		    </ul>
+		</ul>
+
+		
 
 
-
-
-            	</nav>
-
-			</div>
+	</div>
 
 
 	</section>
+	<script src="js/transform.js"></script>
 	<script>
-	/*
-	navShow();
-	function navShow() {
-	var btn = document.querySelector("#menuBtn");
-	var nav = document.querySelector("#nav");
-	btn.addEventListener(
-		"touchstart",
-		function(e) {
-			if(btn.className == "menuBtnClos") {
-				btn.className = "menuBtnShow";
-				nav.style.display = "block";
-			} else {
-				btn.className = "menuBtnClos";
-				nav.style.display = "none";
-			}
-			e.stopPropagation();
-		}
-	);
-	nav.addEventListener("touchstart", function(e) {
-		e.stopPropagation();
-	});
-	document.addEventListener(
-		"touchstart",
-		function (){
-			if(btn.className == "menuBtnShow"){
-				btn.className = "menuBtnClos";
-				nav.style.display = "none";
-			}
-		}
-	);
-}*/
-       
 		;(function(window,document){
 		//拿到那个要点击的button
 		  var btn = document.querySelector("#menuBtn");
@@ -212,12 +207,79 @@
         		btn.className="menuBtnClos";
         		nav.style.display="none";
         	}
-        })
+        });
+
+		}(window,document));
+
+        //以下方法用于可以滑动内容区的导航
+       (function(window,document){
+       	var navScroll = document.querySelector("#navScroll");
+       	var navs = document.querySelector("#navs");
+       	 //在navScroll上开始滑动navScroll的开始滑动点距离page左边的距离的纪录变量
+       	var startPoint = 0 ;
+        //在navScroll开始滑动的时候navs现在translate的坐标点
+       	var startX = 0 ;
+       	//navs的最小坐标点，navs的坐标点在minX～0之间变化
+       	var minX = navScroll.clientWidth - navs.offsetWidth;
+
+
+       	var step = 1;
+
+
+       	navScroll.addEventListener('touchstart',
+       		function(e){
+       			//获取开始滑动的时候手指在navScroll上的开始滑动点距离page的距离
+       			startPoint = e.changedTouches[0].pageX;
+       			//获取开始滑动的时候，此时navs的平移坐标点
+       			startX = cssTransform(navs,"translateX");
+       			//
+       			step = 1;
+
+       		})
+       	navScroll.addEventListener('touchmove',
+       		function(e){
+       			//当手指正在移动的时候手指在navScroll实时距离page的X距离检测值；
+       			var nowPoint = e.changedTouches[0].pageX;
+       			//此时拿到手指移动过程中的关键移动过的距离，实时变化；
+       			var dis = nowPoint-startPoint;
+       			//让navs的平移坐标点加上这个移动过的距离，就是最终navs要达到的评议坐标点
+       			var arriveX = startX+dis;
+       			//此时得到了arriveX值，arriveX值代表navs的最终要达到的平移坐标；
+       			//那么arriveX值为要小于或者等于0；不能大于0；即这个navs的左边缘不能越过navScroll的左边缘到右边来
+       			//如果arriveX>0说明已经越过到左边缘来了
+       			if (arriveX>0) {
+       				//这里应该让arriveX=0
+       				//但是要直接写0看着不爽
+       				//此时无论怎么arriveX怎么大都大不过可视区域navScroll的宽度，
+       				//step = 1 - arriveX／navScroll.clientWidth;
+       				//arriveX=parseInt(arriveX*step);
+       				arriveX=0;
+
+       			}
+       			if (arriveX<minX) {
+       				var overDis = minX-arriveX
+       				step = 1- overDis/navScroll.clientWidth;
+       				overDis = parseInt(overDis*step);
+
+       				arriveX = minX-overDis;
+       			}
+
+       			cssTransform(navs,"translateX",minX-arriveX);
+
+       		});
 
 
 
 
-		}(window,document))
+
+       }(window,document))
+     
+
+
+
+
+   
+
 	</script>
 	
 </body>
